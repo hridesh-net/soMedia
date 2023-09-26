@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the GitHub repository
                 checkout scm
             }
         }
@@ -20,7 +19,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Replace with your deployment commands
+                // Deployment commands
                 sh 'gunicorn -c config/gunicorn/dev.py'
             }
         }
@@ -28,11 +27,9 @@ pipeline {
 
     post {
         success {
-            // Notify about successful deployment, send notifications, etc.
             echo 'Deployment successful!'
         }
         failure {
-            // Notify about deployment failure, send notifications, etc.
             echo 'Deployment failed!'
         }
     }
